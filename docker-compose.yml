@@ -1,0 +1,34 @@
+version: '3.7'
+services:
+  flask-app:
+    build:
+      context: .
+      dockerfile: Dockerfile.flask-app
+    ports:
+      - "5000:5000"
+    depends_on:
+      - scrapper
+      - mongo
+    networks:
+      - scrapper-network
+
+  scrapper:
+    build:
+      context: .
+      dockerfile: Dockerfile.scrapper
+    ports:
+      - "5001:5001"
+    networks:
+      - scrapper-network
+
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - scrapper-network
+
+networks:
+  scrapper-network:
+    driver: bridge

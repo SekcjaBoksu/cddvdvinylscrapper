@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Scraper</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/styles_home.css') }}">
+</head>
+<body>
+    <div class="start">
+        <img class="vinyl" src="static/img/vinyl-static.png">
+        <h1>CD-DVD-VINYL</h1>
+        <h2>SCRAPPER</h2>
+        <p>Sprawdź dyskografię dostępną na</p>
+        <p1>www.cd-dvd-vinyl.pl</p1>
+        <p>wybranego przez siebie artysty.</p>
+        <form action="{{ url_for('scrape') }}" method="post">
+            <input type="text" name="artistName" placeholder="Podaj nazwę artysty" required>
+            <button type="submit">Szukaj</button>
+        </form>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Albumów</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles_list.css') }}">
+</head>
+<body>
+    <div class="toolbar">
+        <a href="{{ url_for('homepage') }}" class="tb-button">← Do strony głównej</a>
+        <h1>Przegląd Dyskografii</h1>
+        <div class="sort-dropdown">
+            <form method="GET">
+                <input type="hidden" name="artist_name" value="{{ artist_name }}">
+                <label for="sort-select">Sortowanie wg:</label>
+                <select id="sort-select" name="sort_option" onchange="this.form.submit()">
+                    <option value="lowest-price" {% if sort_option == 'lowest-price' %}selected{% endif %}>Od najniższej ceny</option>
+                    <option value="highest-price" {% if sort_option == 'highest-price' %}selected{% endif %}>Od najwyższej ceny</option>
+                    <option value="alphabetical-asc" {% if sort_option == 'alphabetical-asc' %}selected{% endif %}>Alfabetycznie A-Z</option>
+                    <option value="alphabetical-desc" {% if sort_option == 'alphabetical-desc' %}selected{% endif %}>Alfabetycznie Z-A</option>
+                </select>
+            </form>
+        </div>
+    </div>
+    <div class="container">
+        <ul class="album-list">
+            {% for album in albums %}
+            <li class="album-item">
+                <div class="album-details">
+                    <div class="album-image-container">
+                        <img class="album-image" src="{{ album['Image URL'] }}" alt="Okładka albumu">
+                    </div>
+                    <div class="album-info">
+                        <h2>{{ album['Author'] }}</h2>
+                        <h3>{{ album['Title'] }}</h3>
+                        <p><span class="label-bold">Gatunek:</span> {{ album['Genre'] }}</p>
+                        <p><span class="label-bold">Cena:</span> {{ album['Price'] }}</p>
+                        <p><span class="label-bold">Liczba Nośników:</span> {{ album['Media Count'] }}</p>
+                        <p><span class="label-bold">Typ Nośnika:</span> {{ album['Media Type'] }}</p>
+                        <p><span class="label-bold">EAN:</span> {{ album['EAN'] }}</p>
+                    </div>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+        <div class="korekta"></div>
+    </div>
+    <div class="pagination">
+        {% for page_num in range(1, total_pages + 1) %}
+        <a href="{{ url_for('list_browser', artist_name=artist_name, sort_option=sort_option, page=page_num) }}"
+           class="page-link {% if page_num == current_page %}active{% endif %}">
+            {{ page_num }}
+        </a>
+        {% endfor %}
+    </div>
+</body>
+</html>

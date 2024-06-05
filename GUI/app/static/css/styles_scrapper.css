@@ -1,0 +1,89 @@
+/* styles_scrapper.css */
+@font-face {
+    font-family: 'Poppins';
+    src: url('fonts/Poppins-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins-Bold';
+    src: url('fonts/Poppins-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'BACKTO1982';
+    src: url('fonts/BACKTO1982.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0; /* Początkowa przezroczystość */
+        transform: translateY(-20px); /* Przesunięcie w górę */
+    }
+    to {
+        opacity: 1; /* Końcowa przezroczystość */
+        transform: translateY(0); 
+    }
+}
+
+@keyframes pulse {
+    from {
+        transform: scale(1); /* Początkowy rozmiar */
+    }
+    to {
+        transform: scale(1.05); /* Końcowy rozmiar */
+    }
+}
+
+body {
+    text-align: center;
+    background-color: aquamarine;
+}
+
+
+h1,h2 {
+    font-family: 'BACKTO1982';
+}
+
+div.container{
+    padding-top: 100px;
+    opacity: 0; /* Początkowa przezroczystość */
+    animation: fadeIn 1.5s ease forwards;
+    text-align: center;
+}
+
+img.vinyl_running{
+    text-align: center;
+    height: 25%;
+    width: 25%;
+    animation: pulse 1.5s infinite alternate;
+}
+
+
+p{
+    font-family:'Poppins' ;
+}
+
+h1::after {
+    content: '';
+    animation: dots 2s steps(4, end) infinite;
+}
+
+@keyframes dots {
+    0%, 100% {
+        content: '';
+    }
+    25% {
+        content: '.';
+    }
+    50% {
+        content: '..';
+    }
+    75% {
+        content: '...';
+    }
+}

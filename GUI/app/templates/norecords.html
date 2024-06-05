@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brak wyników</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles_norecords.css') }}">
+</head>
+<body>
+    <div class="container">
+        <img class="brokenrecord" src="/static/img/broken.png" alt="errorpic">
+        <div class =></div>
+        <h1>Brak wyników</h1>
+        <p>Nie znaleziono albumów dla podanego artysty.</p>
+        <a href="{{ url_for('homepage') }}" class="btn">Powrót na stronę główną</a>
+    </div>
+</body>
+</html>

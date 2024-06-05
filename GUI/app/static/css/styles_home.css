@@ -1,0 +1,76 @@
+@font-face {
+    font-family: 'Poppins';
+    src: url('fonts/Poppins-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins-Bold';
+    src: url('fonts/Poppins-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'BACKTO1982';
+    src: url('fonts/BACKTO1982.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    background-color: aquamarine;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0; 
+        transform: translateY(-20px); 
+    }
+    to {
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+
+h1,h2 {
+
+    font-family: 'BACKTO1982';
+}
+
+div{
+    padding-top: 150px;
+    text-align: center;
+}
+
+img.vinyl{
+    text-align: center;
+    height: 10%;
+    width: 10%;
+}
+
+div.start{
+    opacity: 0; 
+    animation: fadeIn 1.5s ease forwards;
+}
+
+p1{
+    font-family:'Poppins-bold' ;
+}
+
+input[type="text"] {
+    font-family: 'Poppins', sans-serif;
+    width: 300px;
+}
+
+button{
+    font-family: 'Poppins', sans-serif;
+}
+button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  }
+
+

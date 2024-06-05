@@ -1,0 +1,18 @@
+FROM python
+
+
+WORKDIR /app
+
+
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
+
+
+COPY GUI/app app
+COPY GUI/run.py run.py
+
+
+EXPOSE 5000
+
+
+CMD ["python", "run.py"]

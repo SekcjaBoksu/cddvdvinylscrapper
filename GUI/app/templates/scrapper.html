@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Scraper</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles_scrapper.css') }}">
+</head>
+<body>
+    <div class="container">
+        <img class="vinyl_running" src="{{ url_for('static', filename='img/vinyl.gif') }}">
+        <h1>Scrappuje.</h1>
+        <p>Pobieranie Dyskografii: {{ artist_name }}</p>
+    </div>
+    <script>
+        const artistName = "{{ artist_name }}";
+        const checkStatus = async () => {
+            const response = await fetch(`/check_scrape_status?artist_name=${artistName}`);
+            const data = await response.json();
+            if (data.status === 'completed') {
+                window.location.href = `/list?artist_name=${artistName}`;
+            } else if (data.status === 'empty') {
+                window.location.href = `/norecords`;
+            } else {
+                setTimeout(checkStatus, 1000); // Sprawdzaj co 2 sekundy
+            }
+        };
+        checkStatus();
+    </script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+FROM python
+
+
+WORKDIR /engine
+
+
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
+
+
+COPY ENGINE/ScrapperV1.py ScrapperV1.py
+
+
+EXPOSE 5001
+
+
+CMD ["python", "ScrapperV1.py"]
